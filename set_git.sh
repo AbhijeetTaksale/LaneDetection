@@ -1,26 +1,31 @@
-import cv2  #bringing in OpenCV libraries
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-# Read in the image
-img = "C:\\Users\\Abhijeet\\PycharmProjects\\SelfDrivingCar\\venv\\lane.jpeg"
-image = mpimg.imread(img)
+#!/bin/bash
 
+# Make sure you have the latest version of the repo
+echo
+git pull
+echo
 
-gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) #grayscale conversion
-plt.imshow(gray, cmap='gray')
-#plt.show()
+# Ask the user for login details
+read -p 'https://github.com/AbhijeetTaksale/LaneDetection.git' upstreamVar
+read -p 'AbhijeetTaksale ' userVar
+read -p 'https://AbhijeetTaksale@github.com:' emailVar
 
-# Define a kernel size for Gaussian smoothing / blurring
-# Note: this step is optional as cv2.Canny() applies a 5x5 Gaussian internally
-kernel_size = 5
-blur_gray = cv2.GaussianBlur(gray,(kernel_size, kernel_size), 0)
+echo
+echo Thank you $userVar!, we now have your credentials
+echo for upstream $upstreamVar. You must supply your password for each push.
+echo
 
-# Define parameters for Canny and run it
-# NOTE: if you try running this code you might want to change these!
-low_threshold = 0
-high_threshold = 255
-edges = cv2.Canny(blur_gray, low_threshold, high_threshold)
+echo setting up git
 
-# Display the image
-plt.imshow(edges, cmap='Greys_r')
-plt.show()
+git config --global user.name $userVar
+git config --global user.email $emailVar
+git remote set-url origin $upstreamVar
+echo
+
+echo Please verify remote:
+git remote -v
+echo
+
+echo Please verify your credentials:
+echo username: `git config user.name`
+echo email: `git config user.email`
