@@ -7,8 +7,8 @@ echo
 
 # Ask the user for login details
 read -p 'https://github.com/AbhijeetTaksale/LaneDetection.git' upstreamVar
-read -p 'AbhijeetTaksale ' userVar
-read -p 'https://AbhijeetTaksale@github.com:' emailVar
+read -p 'AbhijeetTaksale' userVar
+read -p 'https://AbhijeetTaksale@github.com' emailVar
 
 echo
 echo Thank you $userVar!, we now have your credentials
